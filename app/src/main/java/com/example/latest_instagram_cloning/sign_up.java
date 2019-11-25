@@ -98,7 +98,24 @@ public class sign_up extends AppCompatActivity {
                 getAllServerData.findInBackground(new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> objects, ParseException e) {
-                        
+
+                        if(e==null)
+                        {
+                            if(objects.size()>0)
+                            {
+                                for(ParseObject object:objects)
+                                {
+                                    data=data+object.get("name")+" "+object.get("PunchSpeed")+" "+object.get("PunchPower")+"\n";
+                                }
+                                FancyToast.makeText(sign_up.this, data, FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+
+
+                            }
+                        }
+                        else
+                        {
+                            FancyToast.makeText(sign_up.this, e.getMessage() + "", FancyToast.LENGTH_LONG, FancyToast.WARNING, true).show();
+                        }
                     }
                 });
             }
