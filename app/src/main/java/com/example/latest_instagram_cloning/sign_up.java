@@ -95,6 +95,11 @@ public class sign_up extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ParseQuery<ParseObject> getAllServerData=ParseQuery.getQuery("Kickboxer");
+                //getAllServerData.whereGreaterThan("PunchPower",100);
+                getAllServerData.whereGreaterThanOrEqualTo("PunchPower", 100);
+                getAllServerData.setLimit(2);
+
+
                 getAllServerData.findInBackground(new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> objects, ParseException e) {
