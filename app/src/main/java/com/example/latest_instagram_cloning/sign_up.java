@@ -2,6 +2,7 @@ package com.example.latest_instagram_cloning;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +21,7 @@ import java.util.List;
 
 public class sign_up extends AppCompatActivity {
 
-    private Button saveData,getAllData;
+    private Button saveData,getAllData,switchBtn;
     private EditText name,punchSpeed,punchPower;
     private TextView getData;
     private String data;
@@ -38,6 +39,7 @@ public class sign_up extends AppCompatActivity {
         getData=findViewById(R.id.getData);
         getAllData=findViewById(R.id.getAllData);
         data="";
+        switchBtn=findViewById(R.id.switchBtn);
 
         saveData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +125,16 @@ public class sign_up extends AppCompatActivity {
                         }
                     }
                 });
+            }
+        });
+
+
+        //switch button
+        switchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(sign_up.this,SignUpLogin.class);
+                startActivity(intent);
             }
         });
 
