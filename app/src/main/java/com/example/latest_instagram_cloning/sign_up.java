@@ -130,13 +130,7 @@ public class sign_up extends AppCompatActivity {
 
 
         //switch button
-        switchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(sign_up.this,SignUpLogin.class);
-                startActivity(intent);
-            }
-        });
+
 
 
 
