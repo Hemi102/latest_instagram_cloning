@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
+    android:onClick="rootLayout"
     tools:context=".sign_up">
 
     <TextView
@@ -111,7 +112,7 @@
         android:fadeScrollbars="false"
         android:hapticFeedbackEnabled="false"
         android:hint=" Emai"
-        android:inputType="textPersonName|textEmailAddress"
+        android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
         android:singleLine="true"
         android:textColorLink="#0000FF"

@@ -33,6 +33,12 @@ public class homePage extends AppCompatActivity implements View.OnClickListener 
         loginButton=findViewById(R.id.loginButton);
         loginButton.setOnClickListener(this);
 
+        if(ParseUser.getCurrentUser()!=null)
+        {
+            ParseUser.getCurrentUser().logOut();
+
+        }
+
         MaterialSpinner spinner = (MaterialSpinner) findViewById(R.id.language);
         spinner.setItems("English (United State)", "Arabic", "Urdu", "Bangali", "Turkish");
         spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
