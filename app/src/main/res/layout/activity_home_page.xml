@@ -8,7 +8,7 @@
     tools:context=".homePage">
 
     <com.jaredrummler.materialspinner.MaterialSpinner
-        android:id="@+id/spinner"
+        android:id="@+id/language"
         ms_background_color="#1F1919"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/instagram"
+        android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
@@ -41,10 +41,10 @@
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/language" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/loginUsername"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -63,10 +63,10 @@
         app:backgroundTint="#0000FF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/instagram" />
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/loginPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -77,7 +77,7 @@
         android:fadeScrollbars="false"
         android:hapticFeedbackEnabled="false"
         android:hint="Password"
-        android:inputType="textPersonName|textEmailAddress"
+        android:inputType="textPersonName|textPassword|textEmailAddress"
         android:selectAllOnFocus="true"
         android:singleLine="true"
         android:textColorLink="#0000FF"
@@ -86,10 +86,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/loginUsername" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/loginButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -101,7 +101,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
 
     <TextView
         android:id="@+id/textView2"
@@ -113,10 +113,10 @@
         android:textColor="#979797"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/getHelpSigningin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -127,10 +127,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/loginFbButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -155,7 +155,7 @@
         android:background="#000000"
         app:layout_constraintEnd_toStartOf="@+id/textView5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/loginFbButton" />
 
     <TextView
         android:id="@+id/textView5"
@@ -166,7 +166,7 @@
         android:text="OR"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/loginFbButton" />
 
     <View
         android:id="@+id/view3"
@@ -180,7 +180,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.58"
         app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/loginFbButton" />
 
     <TextView
         android:id="@+id/textView6"
@@ -195,7 +195,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/signupText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"

@@ -14,125 +14,58 @@ import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.parse.SignUpCallback;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.util.List;
 
-public class sign_up extends AppCompatActivity {
+public class sign_up extends AppCompatActivity implements View.OnClickListener {
 
-    private Button saveData,getAllData,switchBtn;
-    private EditText name,punchSpeed,punchPower;
-    private TextView getData;
-    private String data;
+    private Button saveData;
+    private EditText name,email,password;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        name=findViewById(R.id.signupUsername);
+        email=findViewById(R.id.signupEmail);
+        password=findViewById(R.id.signupPassword);
+        saveData=findViewById(R.id.signupButton);
 
-        saveData=findViewById(R.id.saveData);
-        name=findViewById(R.id.edit1);
-        punchSpeed=findViewById(R.id.edit2);
-        punchPower=findViewById(R.id.edit3);
-        getData=findViewById(R.id.getData);
-        getAllData=findViewById(R.id.getAllData);
-        data="";
-        switchBtn=findViewById(R.id.switchBtn);
+        saveData.setOnClickListener(this);
+    }
 
-        saveData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    @Override
+    public void onClick(View v) {
 
-                try {
-                    final ParseObject parseObject = new ParseObject("Kickboxer");
-                    parseObject.put("name", name.getText().toString());
-                    parseObject.put("PunchSpeed", Integer.parseInt(punchSpeed.getText().toString()));
-
-                    parseObject.put("PunchPower", Integer.parseInt(punchPower.getText().toString()));
-                    parseObject.saveInBackground(new SaveCallback() {
-                        @Override
-                        public void done(ParseException e) {
-                            if (e == null) {
-                                FancyToast.makeText(sign_up.this, parseObject.get("name") + " is saved", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
-
-                            } else {
-                                FancyToast.makeText(sign_up.this, e.getMessage() + "", FancyToast.LENGTH_LONG, FancyToast.WARNING, true).show();
-                            }
-                        }
-                    });
-                }
-                catch(Exception e)
-                {
-                    FancyToast.makeText(sign_up.this,e.getMessage()+"",FancyToast.LENGTH_LONG,FancyToast.ERROR,true).show();
-                }
-
-            }
-        });
-
-
-
-        //listner for text view
-        getData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ParseQuery<ParseObject> getServerData=ParseQuery.getQuery("Kickboxer");
-                getServerData.getInBackground("yntOFWDNMS", new GetCallback<ParseObject>() {
+        switch (v.getId())
+        {
+            case R.id.signupButton:
+                final ParseUser parseUser=new ParseUser();
+                parseUser.setUsername(name.getText().toString());
+                parseUser.setEmail(email.getText().toString());
+                parseUser.setPassword(password.getText().toString());
+                parseUser.signUpInBackground(new SignUpCallback() {
                     @Override
-                    public void done(ParseObject object, ParseException e) {
-                        if(e==null)
-                            getData.setText(object.get("name")+" is punch speed: "+object.get("PunchSpeed"));
-                    }
-                });
-
-
-            }
-        });
-
-
-
-        //listner for get all data from server
-        getAllData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ParseQuery<ParseObject> getAllServerData=ParseQuery.getQuery("Kickboxer");
-                //getAllServerData.whereGreaterThan("PunchPower",100);
-                getAllServerData.whereGreaterThanOrEqualTo("PunchPower", 100);
-                getAllServerData.setLimit(2);
-
-
-                getAllServerData.findInBackground(new FindCallback<ParseObject>() {
-                    @Override
-                    public void done(List<ParseObject> objects, ParseException e) {
-
+                    public void done(ParseException e) {
                         if(e==null)
                         {
-                            if(objects.size()>0)
-                            {
-                                for(ParseObject object:objects)
-                                {
-                                    data=data+object.get("name")+" "+object.get("PunchSpeed")+" "+object.get("PunchPower")+"\n";
-                                }
-                                FancyToast.makeText(sign_up.this, data, FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
-
-
-                            }
+                            FancyToast.makeText(sign_up.this,parseUser.get("username")+" signed in:",FancyToast.LENGTH_LONG,FancyToast.SUCCESS,true).show();
                         }
                         else
                         {
-                            FancyToast.makeText(sign_up.this, e.getMessage() + "", FancyToast.LENGTH_LONG, FancyToast.WARNING, true).show();
+                            FancyToast.makeText(sign_up.this,e.getMessage()+" ",FancyToast.LENGTH_LONG,FancyToast.ERROR,true).show();
                         }
                     }
                 });
-            }
-        });
 
+                break;
 
-        //switch button
-
-
-
+        }
 
     }
 }
